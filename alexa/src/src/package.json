@@ -1,0 +1,16 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "description": "Este repositorio contiene todo el código del Skill de Alexa Banca March.",
+  "dependencies": {
+    "ask-sdk": "^2.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "main": "AlexaView.js"
+}

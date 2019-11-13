@@ -1,0 +1,166 @@
+{
+    "type": "APL",
+    "version": "1.0",
+    "theme": "dark",
+    "import": [],
+    "resources": [],
+    "styles": {},
+    "layouts": {},
+    "mainTemplate": {
+        "parameters": [
+            "payload"
+        ],
+        "item": [
+            {
+                "when": "${viewport.shape == 'round'}",
+                "type": "Container",
+                "width": "100vw",
+                "height": "100vh",
+                "direction": "row",
+                "items": [
+                    {
+                        "type": "Frame",
+                        "width": "100vw",
+                        "height": "100vh",
+                        "backgroundColor": "white",
+                        "item": [
+                            {
+                                "type": "Container",
+                                "width": "100vw",
+                                "height": "100vh",
+                                "alignItems": "center",
+                                "item": [
+                                    {
+                                        "type": "Image",
+                                        "width": "100vw",
+                                        "height": "100vw",
+                                        "source": "${payload.BackbroundMetaData.backgroundURL}",
+                                        "align": "center"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Frame",
+                        "width": "150px",
+                        "height": "45px",
+                        "item": [
+                            {
+                                "type": "TouchWrapper",
+                                "width": "100%",
+                                "height": "100%",
+                                "onPress": [
+                                    {
+                                        "type": "SendEvent",
+                                        "arguments": [
+                                            "Help"
+                                        ]
+                                    }
+                                ],
+                                "item": {
+                                    "type": "Container",
+                                    "width": "100%",
+                                    "height": "100%",
+                                    "items": [
+                                        {
+                                            "type": "Text",
+                                            "width": "100%",
+                                            "height": "100%",
+                                            "textAlign": "center",
+                                            "color": "#9bad26",
+                                            "fontSize": "30dp",
+                                            "text": "Ayuda"
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "backgroundColor": "white",
+                        "borderColor": "#9bad26",
+                        "borderRadius": "20",
+                        "borderWidth": "2px",
+                        "position": "absolute",
+                        "left": "167px",
+                        "top": "360px"
+                    }
+                ]
+            },
+            {
+                "type": "Container",
+                "width": "100vw",
+                "height": "100vh",
+                "direction": "column",
+                "alignItems": "center",
+                "items": [
+                    {
+                        "type": "Frame",
+                        "width": "100vw",
+                        "height": "100vh",
+                        "backgroundColor": "white",
+                        "item": [
+                            {
+                                "type": "Container",
+                                "width": "100vw",
+                                "height": "100vh",
+                                "alignItems": "center",
+                                "item": [
+                                    {
+                                        "type": "Image",
+                                        "width": "100vw",
+                                        "height": "100vh",
+                                        "source": "${payload.BackbroundMetaData.backgroundURL}",
+                                        "align": "center"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Frame",
+                        "width": "${viewport.pixelWidth == 960 ? '150px' : (viewport.pixelWidth == 1024 ? '150px' : (viewport.pixelWidth == 1280 ? '290px' : (viewport.pixelWidth == 1920 ? '400px' : '0px')))}",
+                        "height": "${viewport.pixelWidth == 960 ? '45px' : (viewport.pixelWidth == 1024 ? '45px' : (viewport.pixelWidth == 1280 ? '75px' : (viewport.pixelWidth == 1920 ? '115px' : '0px')))}",
+                        "item": [
+                            {
+                                "type": "TouchWrapper",
+                                "width": "100%",
+                                "height": "100%",
+                                "onPress": [
+                                    {
+                                        "type": "SendEvent",
+                                        "arguments": [
+                                            "Help"
+                                        ]
+                                    }
+                                ],
+                                "item": {
+                                    "type": "Container",
+                                    "width": "100%",
+                                    "height": "100%",
+                                    "items": [
+                                        {
+                                            "type": "Text",
+                                            "width": "100%",
+                                            "height": "100%",
+                                            "textAlign": "center",
+                                            "color": "#9bad26",
+                                            "fontSize": "${viewport.pixelWidth == 960 ? '30dp' : (viewport.pixelWidth == 1024 ? '30dp' : (viewport.pixelWidth == 1280 ? '48dp' : (viewport.pixelWidth == 1920 ? '40dp' : '0px')))}",
+                                            "text": "Ayuda"
+                                        }
+                                    ]
+                                }
+                            }
+                        ],
+                        "backgroundColor": "white",
+                        "borderColor": "#9bad26",
+                        "borderRadius": "${viewport.pixelWidth == 960 ? '30' : (viewport.pixelWidth == 1024 ? '30' : (viewport.pixelWidth == 1280 ? '40' : (viewport.pixelWidth == 1920 ? '40' : '0px')))}",
+                        "borderWidth": "${viewport.pixelWidth == 960 ? '2px' : (viewport.pixelWidth == 1024 ? '2px' : (viewport.pixelWidth == 1280 ? '3px' : (viewport.pixelWidth == 1920 ? '5px' : '0px')))}",
+                        "position": "absolute",
+                        "left": "${viewport.pixelWidth == 960 ? '407px' : (viewport.pixelWidth == 1024 ? '440px' : (viewport.pixelWidth == 1280 ? '505px' : (viewport.pixelWidth == 1920 ? '770px' : '0px')))}",
+                        "top": "${viewport.pixelWidth == 960 ? '340px' : (viewport.pixelWidth == 1024 ? '420px' : (viewport.pixelWidth == 1280 ? '540px' : (viewport.pixelWidth == 1920 ? '730px' : '0px')))}"
+                    }
+                ]
+            }
+        ]
+    }
+}
