@@ -9,6 +9,7 @@ module.exports = class Attributes {
         this.errorVIP = new ErrorVIP();
         this.myIntentSlot = new MyIntentSlot(); //Este objeto es sólo un ejemplo, debemos generar un objeto por cada uno de los Slots del Modelo.
         this.apl = new Apl();
+        this.exerciseCounter = 0;
     }
     clear() {
         this.alexaInfo = new AlexaInfo();
@@ -17,6 +18,7 @@ module.exports = class Attributes {
         this.errorVIP = new ErrorVIP();
         this.myIntentSlot = new MyIntentSlot();
         this.apl = new Apl();
+        this.exerciseCounter = 0;
     }
     init(values) {
         this.voiceResponse = new VoiceResponse().init(values.voiceResponse);
@@ -24,6 +26,7 @@ module.exports = class Attributes {
         this.errorVIP = new ErrorVIP().init(values.errorVIP);
         this.myIntentSlot = new MyIntentSlot().init(values.myIntentSlot);
         this.apl = new Apl().init(values.apl);
+        this.exerciseCounter = values.exerciseCounter;
         return this;
     }
     toJSON() {

@@ -129,7 +129,7 @@ const skillHelpHandler = {
         const {
             request
         } = handlerInput.requestEnvelope;
-        return (request.type === 'IntentRequest' && request.intent.name === 'Help');
+        return (request.type === 'IntentRequest' && request.intent.name === 'AMAZON.HelpIntent');
     },
     async handle(handlerInput) {
         try {
@@ -470,6 +470,110 @@ const skillAPLUserEvent = {
     }
 };
 
+
+
+/**
+ * Constante skillGreetingsHandler: Encargada de maejar la respuesta de saludos de la Skill.
+ */
+const skillLegRoutineHandler = {
+    canHandle(handlerInput) {
+        const {
+            request
+        } = handlerInput.requestEnvelope;
+        return (request.type === 'IntentRequest' && request.intent.name === 'LegRoutine');
+    },
+    async handle(handlerInput) {
+        try {
+            //Inicializamos el objeto de sessión de la arquitectura.
+            let attributes = await View.ViewManager.initAttributes(handlerInput);
+
+            //Llamamos a la logica del intent.
+            await Presenter.GenericPresenter.getLegRoutineMessage(attributes);
+
+            //Guardamos el objeto de sessión de la arquitectura.
+            View.ViewManager.saveAttributes(handlerInput, attributes);
+
+            //Obtenemos la información del APL correspondiente al intent.
+            let apl = new Apl();
+            apl.aplIntentView = View.ViewManager.getCurrentIntentName(handlerInput);
+            await View.APLBuilder.getAPL(attributes, apl);
+
+            //Retornamos el objeto responseBuilder de Alexa. 
+            return View.ResponseBuilder.getResponse(handlerInput, attributes, apl);
+
+        } catch (error) {
+            console.VIPError('skillLegRoutineHandler try error: ' + error);
+            return View.ViewManager.getErrorInView(handlerInput);
+        };
+    }
+}
+
+const skillNextExerciseHandler = {
+    canHandle(handlerInput) {
+        const {
+            request
+        } = handlerInput.requestEnvelope;
+        return (request.type === 'IntentRequest' && request.intent.name === 'NextExercise');
+    },
+    async handle(handlerInput) {
+        try {
+            //Inicializamos el objeto de sessión de la arquitectura.
+            let attributes = await View.ViewManager.initAttributes(handlerInput);
+
+            //Llamamos a la logica del intent.
+            await Presenter.GenericPresenter.getNextExerciseMessage(attributes);
+
+            //Guardamos el objeto de sessión de la arquitectura.
+            View.ViewManager.saveAttributes(handlerInput, attributes);
+
+            //Obtenemos la información del APL correspondiente al intent.
+            let apl = new Apl();
+            apl.aplIntentView = View.ViewManager.getCurrentIntentName(handlerInput);
+            await View.APLBuilder.getAPL(attributes, apl);
+
+            //Retornamos el objeto responseBuilder de Alexa. 
+            return View.ResponseBuilder.getResponse(handlerInput, attributes, apl);
+
+        } catch (error) {
+            console.VIPError('skillLegRoutineHandler try error: ' + error);
+            return View.ViewManager.getErrorInView(handlerInput);
+        };
+    }
+}
+
+const skillArmRoutineHandler = {
+    canHandle(handlerInput) {
+        const {
+            request
+        } = handlerInput.requestEnvelope;
+        return (request.type === 'IntentRequest' && request.intent.name === 'ArmRoutine');
+    },
+    async handle(handlerInput) {
+        try {
+            //Inicializamos el objeto de sessión de la arquitectura.
+            let attributes = await View.ViewManager.initAttributes(handlerInput);
+
+            //Llamamos a la logica del intent.
+            await Presenter.GenericPresenter.getArmRoutineMessage(attributes);
+
+            //Guardamos el objeto de sessión de la arquitectura.
+            View.ViewManager.saveAttributes(handlerInput, attributes);
+
+            //Obtenemos la información del APL correspondiente al intent.
+            let apl = new Apl();
+            apl.aplIntentView = View.ViewManager.getCurrentIntentName(handlerInput);
+            await View.APLBuilder.getAPL(attributes, apl);
+
+            //Retornamos el objeto responseBuilder de Alexa. 
+            return View.ResponseBuilder.getResponse(handlerInput, attributes, apl);
+
+        } catch (error) {
+            console.VIPError('skillArmRoutineHandler try error: ' + error);
+            return View.ViewManager.getErrorInView(handlerInput);
+        };
+    }
+}
+
 //#endregion APL.UserEvent
 
 exports.handler = skillBuilder
@@ -487,5 +591,8 @@ exports.handler = skillBuilder
         skillNoFutureFuncionalitiesHandler,
         skillGreetingsHandler,
         skillAPLUserEvent,
+        skillLegRoutineHandler,
+        skillArmRoutineHandler,
+        skillNextExerciseHandler,
         skillDefaultHandler // éste intent siempre tiene que estar de último.
     ).lambda();

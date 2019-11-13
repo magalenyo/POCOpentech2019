@@ -1,0 +1,31 @@
+{
+    "type": "APL",
+    "version": "1.1",
+    "settings": {},
+    "theme": "dark",
+    "import": [],
+    "resources": [],
+    "styles": {},
+    "onMount": [],
+    "graphics": {},
+    "commands": {},
+    "layouts": {},
+    "mainTemplate": {
+        "parameters": [
+            "payload"
+        ],
+        "items": [
+            {
+                "type": "Frame",
+                "item": {
+                    "type": "Image",
+                    "width": "100vw",
+                    "height": "100vh",
+                    "source": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDMPrXislhxwWl5Kg8_7idquf2ylG6_68ppx-mz9h9RxIUt7fT&s",
+                    "scale": "best-fit"
+                },
+                "backgroundColor": "black"
+            }
+        ]
+    }
+}

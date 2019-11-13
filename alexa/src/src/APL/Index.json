@@ -1,0 +1,31 @@
+{
+    "type": "APL",
+    "version": "1.1",
+    "settings": {},
+    "theme": "dark",
+    "import": [],
+    "resources": [],
+    "styles": {},
+    "onMount": [],
+    "graphics": {},
+    "commands": {},
+    "layouts": {},
+    "mainTemplate": {
+        "parameters": [
+            "payload"
+        ],
+        "items": [
+            {
+                "type": "Frame",
+                "item": {
+                    "type": "Image",
+                    "width": "100vw",
+                    "height": "100vh",
+                    "source": "https://es.freelogodesign.org/Content/img/logo-ex-7.png",
+                    "scale": "best-fit"
+                },
+                "backgroundColor": "white"
+            }
+        ]
+    }
+}
