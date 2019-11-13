@@ -276,6 +276,9 @@ async function getLegRoutineMessage(attributes = new Attributes().init(attribute
     console.VIPLog('attributes: ' + JSON.stringify(attributes, null, 4));
     try {
         try {
+            if (attributes.session.currentIntent != 'NextExercise') {
+                attributes.exerciseCounter = 0;
+            }
             let currentExerciseMessage = '';
             let currentExerciseRepromptMessage = '';
             console.VIPError("ERROR IN LEG ROUTINE: "+ attributes.exerciseCounter);
@@ -334,9 +337,12 @@ async function getArmRoutineMessage(attributes = new Attributes().init(attribute
     console.VIPLog('attributes: ' + JSON.stringify(attributes, null, 4));
     try {
         try {
+            if (attributes.session.currentIntent != 'NextExercise') {
+                attributes.exerciseCounter = 0;
+            }
             let currentExerciseMessage = '';
             let currentExerciseRepromptMessage = '';
-            console.VIPError("ERROR IN ARM ROUTINE: "+ attributes.exerciseCounter);
+            console.VIPLog("Current exercise: "+ attributes.exerciseCounter);
             attributes.session.currentIntent = 'ArmRoutine';
             switch (attributes.exerciseCounter){
                 case 0:
@@ -386,6 +392,10 @@ async function getNextExerciseMessage(attributes = new Attributes().init(attribu
     console.VIPLog('attributes: ' + JSON.stringify(attributes, null, 4));
     try {
         try {
+            console.VIPLog("PREV:"+attributes.session.previousIntent + " CURR:"+ attributes.session.currentIntent);
+            if (attributes.session.currentIntent != 'NextExercise') {
+                attributes.exerciseCounter = 0;
+            }
             switch(attributes.session.previousIntent){
                 case 'LegRoutine':
                     return await getLegRoutineMessage(attributes);
@@ -413,6 +423,31 @@ async function getNextExerciseMessage(attributes = new Attributes().init(attribu
     }
 }
 
+/**
+ * Función getBreakRoutineMessage: encargada de devolver el mensaje de saludos.
+ * @param  {Attributes} attributes
+ * @returns {Attributes} attributes
+ */
+async function getBreakRoutineMessage(attributes = new Attributes().init(attributes)) {
+    console.VIPLog('attributes: ' + JSON.stringify(attributes, null, 4));
+    try {
+        try {
+            attributes.exerciseCounter = 0;
+            attributes.apl.title = 'Index';
+            console.VIPLog('getBreakRoutineMessage INIT');
+            await Libraries.UtilsVIP.getSpeakText(attributes, Libraries.TextConstants.BreakRoutineText, Libraries.TextConstants.BreakRoutineRepromptText);
+            console.VIPLog('getBreakRoutineMessage ENDED');
+            return Promise.resolve(attributes);
+        } catch (error) {
+            console.VIPError('getBreakRoutineMessage try error: ' + error);
+            throw new Error(error);
+        };
+    } catch (error) {
+        await Libraries.UtilsVIP.getErrorText(attributes);
+        return Promise.resolve(attributes);
+    }
+}
+
 module.exports.getLaunchRequestMessage = getLaunchRequestMessage;
 module.exports.getSessionEndedRequestMessage = getSessionEndedRequestMessage;
 module.exports.getRestartMessage = getRestartMessage;
@@ -427,3 +462,4 @@ module.exports.getGreetingsMessage = getGreetingsMessage;
 module.exports.getLegRoutineMessage = getLegRoutineMessage;
 module.exports.getArmRoutineMessage = getArmRoutineMessage;
 module.exports.getNextExerciseMessage = getNextExerciseMessage;
+module.exports.getBreakRoutineMessage = getBreakRoutineMessage;

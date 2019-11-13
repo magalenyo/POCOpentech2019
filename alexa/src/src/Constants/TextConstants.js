@@ -10,11 +10,11 @@ class TextConstants {
     static getConstants() {
         return {
         
-            LaunchRequestSpeakText: 'Hello, <lang xml:lang="es-ES">Juan</lang>. I\'ve Seen your doctor has set leg and arm exercises routines for you. Which one do you want to start with? Say leg routine or arm routine',
-            LaunchRequestRepromptText: 'Hello, Juan. I\'ve Seen your doctor has set some exercises for you. Which one do you want to start with?',
+            LaunchRequestSpeakText: 'Hello, <lang xml:lang="es-ES">Juan</lang>. I\'ve Seen your doctor has set leg and arm exercises routines for you. Which one do you want to start with? Say leg routine or arm routine.',
+            LaunchRequestRepromptText: 'Hello, <lang xml:lang="es-ES">Juan</lang>. I\'ve Seen your doctor has set leg and arm exercises routines for you. Which one do you want to start with? Say leg routine or arm routine.',
 
-            SessionEndedSpeakText: 'Muchas gracias por su consulta. Espero que volvamos a hablar pronto. <say-as interpret-as="interjection">Hasta luego</say-as>.',
-            SessionEndedRepromptText: 'Muchas gracias por su consulta. Espero que volvamos a hablar pronto. <say-as interpret-as="interjection">Hasta luego</say-as>.',
+            SessionEndedSpeakText: 'Thanks, have a good day.',
+            SessionEndedRepromptText: 'Thanks, have a good day.',
 
             RestartSpeakText: 'De acuerdo., volvamos a empezar ¿Qué desea hacer?',
             RestartRepromptText: 'De acuerdo., volvamos a empezar ¿Qué desea hacer?',
@@ -43,14 +43,14 @@ class TextConstants {
             LegRoutineSpeakText: 'Let\'s start with the leg routine. If you want to stop at any moment, please say: routine break.',
             LegRoutineRepromptText: 'Let\'s start with the leg routine. If you want to stop at any moment, please say: routine break. If you want to finish, please say: stop.',
 
-            LegRoutineExercise1Text: 'Sitting on a chair, extend your left leg until it is parallel to the floor. Avoid tensing your knee. Then, slowly lower your foot to the floor. Repeat with the right leg.',
-            LegRoutineExercise1RepromptText: 'Sitting on a chair, extend your left leg until it is parallel to the floor. Avoid tensing your knee. Then, slowly lower your foot to the floor.',
+            LegRoutineExercise1Text: 'Sitting on a chair, extend your left leg until it is parallel to the floor. Avoid tensing your knee. Then, slowly lower your foot to the floor. Repeat with the right leg. <audio src="soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_countdown_loop_32s_full_01"/>',
+            LegRoutineExercise1RepromptText: 'Sitting on a chair, extend your left leg until it is parallel to the floor. Avoid tensing your knee. Then, slowly lower your foot to the floor. <audio src="soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_countdown_loop_32s_full_01"/>',
 
-            LegRoutineExercise2Text: 'Sitting in a chair, lift the affected leg toward your chest, doing everything possible to maintain a controlled movement. Then place your foot back on the floor. Repeat with the other leg.',
-            LegRoutineExercise2RepromptText: 'Sitting in a chair, lift the affected leg toward your chest, doing everything possible to maintain a controlled movement. Then place your foot back on the floor. Repeat with the other leg.',
+            LegRoutineExercise2Text: 'Sitting in a chair, lift the affected leg toward your chest, doing everything possible to maintain a controlled movement. Then place your foot back on the floor. Repeat with the other leg. <audio src="soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_countdown_loop_32s_full_01"/>',
+            LegRoutineExercise2RepromptText: 'Sitting in a chair, lift the affected leg toward your chest, doing everything possible to maintain a controlled movement. Then place your foot back on the floor. Repeat with the other leg. <audio src="soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_countdown_loop_32s_full_01"/>',
 
-            LegRoutineEndText: 'Well done! You have successfully finished the routine.',
-            LegRoutineEndRepromptText: 'Well done! You have successfully finished the routine.',
+            LegRoutineEndText: '<say-as interpret-as="interjection">Well done.</say-as> You have successfully finished the routine. Which routine do you want to start, leg routine or arm routine?',
+            LegRoutineEndRepromptText: '<say-as interpret-as="interjection">Well done.</say-as> You have successfully finished the routine. Which routine do you want to start, leg routine or arm routine?',
 
             LegRoutineDefaultText: 'Default case.',
             LegRoutineDefaultRepromptText: 'Default case.',
@@ -58,17 +58,20 @@ class TextConstants {
             ArmRoutineSpeakText: 'Let\'s start with the arm routine. If you want to stop at any moment, please say: routine break.',
             ArmRoutineRepromptText: 'Let\'s start with the arm routine. If you want to stop at any moment, please say: routine break. If you want to finish, please say: stop.',
 
-            ArmRoutineExercise1Text: 'Wrap your hands around a bottle of water. Then, make large circular movements. You can use your unaffected arm to guide your affected arm. Make 10 circles slowly and in a controlled manner.',
-            ArmRoutineExercise1RepromptText: 'Wrap your hands around a bottle of water. Then, make large circular movements. You can use your unaffected arm to guide your affected arm. Make 10 circles slowly and in a controlled manner.',
+            ArmRoutineExercise1Text: 'Wrap your hands around a bottle of water. Then, make large circular movements. You can use your unaffected arm to guide your affected arm. Make 10 circles slowly and in a controlled manner. <audio src="soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_countdown_loop_32s_full_01"/>',
+            ArmRoutineExercise1RepromptText: 'Wrap your hands around a bottle of water. Then, make large circular movements. You can use your unaffected arm to guide your affected arm. Make 10 circles slowly and in a controlled manner. <audio src="soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_countdown_loop_32s_full_01"/>',
 
-            ArmRoutineExercise2Text: 'Hold a bottle of water with the affected hand and keep your elbows attached to your sides. Then, with your arms folded at 90 degrees, open your arms so that your forearms come out to the sides. Return your arms to the center and repeat slowly 10 times.',
-            ArmRoutineExercise2RepromptText: 'Hold a bottle of water with the affected hand and keep your elbows attached to your sides. Then, with your arms folded at 90 degrees, open your arms so that your forearms come out to the sides. Return your arms to the center and repeat slowly 10 times.',
+            ArmRoutineExercise2Text: 'Hold a bottle of water with the affected hand and keep your elbows attached to your sides. Then, with your arms folded at 90 degrees, open your arms so that your forearms come out to the sides. Return your arms to the center and repeat slowly 10 times. <audio src="soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_countdown_loop_32s_full_01"/>',
+            ArmRoutineExercise2RepromptText: 'Hold a bottle of water with the affected hand and keep your elbows attached to your sides. Then, with your arms folded at 90 degrees, open your arms so that your forearms come out to the sides. Return your arms to the center and repeat slowly 10 times. <audio src="soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_countdown_loop_32s_full_01"/>',
 
-            ArmRoutineEndText: 'Well done! You have successfully finished the routine.',
-            ArmRoutineEndRepromptText: 'Well done! You have successfully finished the routine.',
+            ArmRoutineEndText: 'Well done! You have successfully finished the routine. Which routine do you want to start, leg routine or arm routine?',
+            ArmRoutineEndRepromptText: 'Well done! You have successfully finished the routine. Which routine do you want to start, leg routine or arm routine?',
 
             ArmRoutineDefaultText: 'Default case.',
             ArmRoutineDefaultRepromptText: 'Default case.',
+
+            BreakRoutineText: 'We stopped the routine. Which routine do you want to start, leg routine or arm routine?',
+            BreakRoutineRepromptText: 'We stopped the routine. Which routine do you want to start, leg routine or arm routine?',
 
             ErrorSpeakText: 'Ha ocurrido un error intente de nuevo más tarfde.',
             ErrorRepromptText: 'Ha ocurrido un error intente de nuevo más tarfde.',

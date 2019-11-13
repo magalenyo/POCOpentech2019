@@ -32,6 +32,7 @@ async function getAPL(attributes = new Attributes().init(attributes), apl = new 
                 break;
             case 'LegRoutine':
             case 'ArmRoutine':
+            case 'BreakRoutine':
                 await getCustomBackGroundView(attributes,apl);
                 break;
             default:

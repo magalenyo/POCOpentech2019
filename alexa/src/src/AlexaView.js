@@ -574,6 +574,39 @@ const skillArmRoutineHandler = {
     }
 }
 
+const skillBreakRoutineHandler = {
+    canHandle(handlerInput) {
+        const {
+            request
+        } = handlerInput.requestEnvelope;
+        return (request.type === 'IntentRequest' && request.intent.name === 'BreakRoutine');
+    },
+    async handle(handlerInput) {
+        try {
+            //Inicializamos el objeto de sessión de la arquitectura.
+            let attributes = await View.ViewManager.initAttributes(handlerInput);
+
+            //Llamamos a la logica del intent.
+            await Presenter.GenericPresenter.getBreakRoutineMessage(attributes);
+
+            //Guardamos el objeto de sessión de la arquitectura.
+            View.ViewManager.saveAttributes(handlerInput, attributes);
+
+            //Obtenemos la información del APL correspondiente al intent.
+            let apl = new Apl();
+            apl.aplIntentView = View.ViewManager.getCurrentIntentName(handlerInput);
+            await View.APLBuilder.getAPL(attributes, apl);
+
+            //Retornamos el objeto responseBuilder de Alexa. 
+            return View.ResponseBuilder.getResponse(handlerInput, attributes, apl);
+
+        } catch (error) {
+            console.VIPError('skillBreakRoutineHandler try error: ' + error);
+            return View.ViewManager.getErrorInView(handlerInput);
+        };
+    }
+}
+
 //#endregion APL.UserEvent
 
 exports.handler = skillBuilder
@@ -594,5 +627,6 @@ exports.handler = skillBuilder
         skillLegRoutineHandler,
         skillArmRoutineHandler,
         skillNextExerciseHandler,
+        skillBreakRoutineHandler,
         skillDefaultHandler // éste intent siempre tiene que estar de último.
     ).lambda();
