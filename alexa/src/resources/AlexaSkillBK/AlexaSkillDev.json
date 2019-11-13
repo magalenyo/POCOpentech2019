@@ -135,6 +135,13 @@
                     "samples":[
                         "break routine"
                     ]
+                },
+                {
+                    "name":"NeedSupport",
+                    "slots":[],
+                    "samples":[
+                        "need support"
+                    ]
                 }
             ],
             "types": []

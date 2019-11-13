@@ -22,8 +22,8 @@ class TextConstants {
             HelpSpeakText: 'Puedo ayudarle con muchas cosas, ¿Qué desea hacer?',
             HelpRepromptText: 'Puedo ayudarle con muchas cosas, ¿Qué desea hacer?',
 
-            SillyStuffSpeakText: ['Disculpe, no le he entendido bien. ¿Le importaría repetir de nuevo?', 'Disculpe, sigo sin comprenderle. ¿Podría solicitármelo de una manera diferente?'],
-            SillyStuffRepromptText: 'Disculpe, no le he entendido bien. ¿Le importaría repetir de nuevo?',
+            SillyStuffSpeakText: ['Sorry, can you repeat please?'],
+            SillyStuffRepromptText: 'Sorry, can you repeat please?',
 
             GratitudeSpeakText: 'Muchas gracias por sus palabras. ¿Con qué otra cosa podría ayudarle?',
             GratitudeRepromptText: 'Muchas gracias por sus palabras. ¿Con qué otra cosa podría ayudarle?',
@@ -73,11 +73,14 @@ class TextConstants {
             BreakRoutineText: 'We stopped the routine. Which routine do you want to start, leg routine or arm routine?',
             BreakRoutineRepromptText: 'We stopped the routine. Which routine do you want to start, leg routine or arm routine?',
 
-            ErrorSpeakText: 'Ha ocurrido un error intente de nuevo más tarfde.',
-            ErrorRepromptText: 'Ha ocurrido un error intente de nuevo más tarfde.',
+            ErrorSpeakText: 'An error has occured, try later.',
+            ErrorRepromptText: 'An error has occured, try later.',
 
             NextExerciseDefaultText: 'Default message for the next exercise case.',
             NextExerciseDefaultRepromptText: 'Default message for the next exercise case.',
+
+            NeedSupportText: 'You required some help. Which routine do you want to start, leg routine or arm routine?',
+            NeedSupportRepromptText: 'You required some help. Which routine do you want to start, leg routine or arm routine?',
 
             RepromptHeaderSpeakText: ['¿Sigue por ahí? Por qué no prueba a preguntarme cosas como: '],
             RepropmtSpeakText: ['Ayuda', 'Funcionalidad uno', 'Funcionalidad dos'],

@@ -31,6 +31,7 @@ function getResponse(handlerInput, attributes = new Attributes().init(attributes
             case 'ArmRoutine':
             case 'NextExercise':
             case 'BreakRoutine':
+            case 'NeedSupport':
                 return getGenericResponse(handlerInput, attributes, apl);
                 break;
             default:

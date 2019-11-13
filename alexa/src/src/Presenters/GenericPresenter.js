@@ -276,7 +276,7 @@ async function getLegRoutineMessage(attributes = new Attributes().init(attribute
     console.VIPLog('attributes: ' + JSON.stringify(attributes, null, 4));
     try {
         try {
-            if (attributes.session.currentIntent != 'NextExercise') {
+            if (attributes.session.currentIntent != 'NextExercise' && attributes.session.currentIntent != 'NeedSupport') {
                 attributes.exerciseCounter = 0;
             }
             let currentExerciseMessage = '';
@@ -337,7 +337,7 @@ async function getArmRoutineMessage(attributes = new Attributes().init(attribute
     console.VIPLog('attributes: ' + JSON.stringify(attributes, null, 4));
     try {
         try {
-            if (attributes.session.currentIntent != 'NextExercise') {
+            if (attributes.session.currentIntent != 'NextExercise' && attributes.session.currentIntent != 'NeedSupport') {
                 attributes.exerciseCounter = 0;
             }
             let currentExerciseMessage = '';
@@ -393,7 +393,7 @@ async function getNextExerciseMessage(attributes = new Attributes().init(attribu
     try {
         try {
             console.VIPLog("PREV:"+attributes.session.previousIntent + " CURR:"+ attributes.session.currentIntent);
-            if (attributes.session.currentIntent != 'NextExercise') {
+            if (attributes.session.currentIntent != 'NextExercise' && attributes.session.currentIntent != 'NeedSupport') {
                 attributes.exerciseCounter = 0;
             }
             switch(attributes.session.previousIntent){
@@ -448,6 +448,44 @@ async function getBreakRoutineMessage(attributes = new Attributes().init(attribu
     }
 }
 
+/**
+ * Función getNeedSupportMessage: encargada de devolver el mensaje de saludos.
+ * @param  {Attributes} attributes
+ * @returns {Attributes} attributes
+ */
+async function getNeedSupportMessage(attributes = new Attributes().init(attributes)) {
+    console.VIPLog('attributes: ' + JSON.stringify(attributes, null, 4));
+    try {
+        try {
+            if (attributes.exerciseCounter > 0){
+                attributes.exerciseCounter--;
+            } 
+            switch(attributes.session.previousIntent){
+                case 'LegRoutine':
+                    return await getLegRoutineMessage(attributes);
+                    break;
+                case 'ArmRoutine':
+                    return await getArmRoutineMessage(attributes);
+                    break;
+                default:
+                    console.VIPLog('getNeedSupportMessage INIT');
+                    await Libraries.UtilsVIP.getSpeakText(attributes, 
+                        Libraries.TextConstants.NeedSupportText,
+                        Libraries.TextConstants.NeedSupportRepromptText);
+                    console.VIPLog('getNeedSupportMessage ENDED');
+                    return Promise.resolve(attributes);
+                    break;
+            }
+        } catch (error) {
+            console.VIPError('getNeedSupportMessage try error: ' + error);
+            throw new Error(error);
+        };
+    } catch (error) {
+        await Libraries.UtilsVIP.getErrorText(attributes);
+        return Promise.resolve(attributes);
+    }
+}
+
 module.exports.getLaunchRequestMessage = getLaunchRequestMessage;
 module.exports.getSessionEndedRequestMessage = getSessionEndedRequestMessage;
 module.exports.getRestartMessage = getRestartMessage;
@@ -463,3 +501,4 @@ module.exports.getLegRoutineMessage = getLegRoutineMessage;
 module.exports.getArmRoutineMessage = getArmRoutineMessage;
 module.exports.getNextExerciseMessage = getNextExerciseMessage;
 module.exports.getBreakRoutineMessage = getBreakRoutineMessage;
+module.exports.getNeedSupportMessage = getNeedSupportMessage;
